@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ImageSearch": {
+      "commandName": "Project",
+      "commandLineArgs": "Matokies8.png Matokies1.png 30 euclidian"
+    }
+  }
+}

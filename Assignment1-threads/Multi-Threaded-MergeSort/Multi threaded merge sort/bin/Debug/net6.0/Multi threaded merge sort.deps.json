@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Multi threaded merge sort/1.0.0": {
+        "runtime": {
+          "Multi threaded merge sort.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Multi threaded merge sort/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

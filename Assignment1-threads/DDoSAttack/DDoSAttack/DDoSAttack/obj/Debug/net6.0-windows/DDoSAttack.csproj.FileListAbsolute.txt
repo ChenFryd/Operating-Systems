@@ -1,0 +1,17 @@
+C:\Users\lenan\source\repos\DDoSAttack\DDoSAttack\bin\Debug\net6.0-windows\DDoSAttack.exe
+C:\Users\lenan\source\repos\DDoSAttack\DDoSAttack\bin\Debug\net6.0-windows\DDoSAttack.deps.json
+C:\Users\lenan\source\repos\DDoSAttack\DDoSAttack\bin\Debug\net6.0-windows\DDoSAttack.runtimeconfig.json
+C:\Users\lenan\source\repos\DDoSAttack\DDoSAttack\bin\Debug\net6.0-windows\DDoSAttack.dll
+C:\Users\lenan\source\repos\DDoSAttack\DDoSAttack\bin\Debug\net6.0-windows\DDoSAttack.pdb
+C:\Users\lenan\source\repos\DDoSAttack\DDoSAttack\obj\Debug\net6.0-windows\DDoSAttack.csproj.AssemblyReference.cache
+C:\Users\lenan\source\repos\DDoSAttack\DDoSAttack\obj\Debug\net6.0-windows\DDoSAttack.Form1.resources
+C:\Users\lenan\source\repos\DDoSAttack\DDoSAttack\obj\Debug\net6.0-windows\DDoSAttack.csproj.GenerateResource.cache
+C:\Users\lenan\source\repos\DDoSAttack\DDoSAttack\obj\Debug\net6.0-windows\DDoSAttack.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lenan\source\repos\DDoSAttack\DDoSAttack\obj\Debug\net6.0-windows\DDoSAttack.AssemblyInfoInputs.cache
+C:\Users\lenan\source\repos\DDoSAttack\DDoSAttack\obj\Debug\net6.0-windows\DDoSAttack.AssemblyInfo.cs
+C:\Users\lenan\source\repos\DDoSAttack\DDoSAttack\obj\Debug\net6.0-windows\DDoSAttack.csproj.CoreCompileInputs.cache
+C:\Users\lenan\source\repos\DDoSAttack\DDoSAttack\obj\Debug\net6.0-windows\DDoSAttack.dll
+C:\Users\lenan\source\repos\DDoSAttack\DDoSAttack\obj\Debug\net6.0-windows\refint\DDoSAttack.dll
+C:\Users\lenan\source\repos\DDoSAttack\DDoSAttack\obj\Debug\net6.0-windows\DDoSAttack.pdb
+C:\Users\lenan\source\repos\DDoSAttack\DDoSAttack\obj\Debug\net6.0-windows\DDoSAttack.genruntimeconfig.cache
+C:\Users\lenan\source\repos\DDoSAttack\DDoSAttack\obj\Debug\net6.0-windows\ref\DDoSAttack.dll

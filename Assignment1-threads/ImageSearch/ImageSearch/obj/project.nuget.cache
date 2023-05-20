@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "1Eb/3dE2Oj01KopX/Kr0b/ZxL+/QqW3aKO1lkXLq9aJFFWMuxg+d6hnrH//Tf+ZawCfY6V3hOCRHCgFl3d5Nsw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Chen\\source\\repos\\ImageSearch\\ImageSearch\\ImageSearch.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Chen\\.nuget\\packages\\microsoft.win32.systemevents\\7.0.0\\microsoft.win32.systemevents.7.0.0.nupkg.sha512",
+    "C:\\Users\\Chen\\.nuget\\packages\\system.drawing.common\\7.0.0\\system.drawing.common.7.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

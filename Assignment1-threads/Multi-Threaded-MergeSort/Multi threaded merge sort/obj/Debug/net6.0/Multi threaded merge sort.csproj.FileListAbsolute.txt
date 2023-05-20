@@ -1,0 +1,15 @@
+C:\Users\Chen\source\repos\Multi threaded merge sort\Multi threaded merge sort\bin\Debug\net6.0\Multi threaded merge sort.exe
+C:\Users\Chen\source\repos\Multi threaded merge sort\Multi threaded merge sort\bin\Debug\net6.0\Multi threaded merge sort.deps.json
+C:\Users\Chen\source\repos\Multi threaded merge sort\Multi threaded merge sort\bin\Debug\net6.0\Multi threaded merge sort.runtimeconfig.json
+C:\Users\Chen\source\repos\Multi threaded merge sort\Multi threaded merge sort\bin\Debug\net6.0\Multi threaded merge sort.dll
+C:\Users\Chen\source\repos\Multi threaded merge sort\Multi threaded merge sort\bin\Debug\net6.0\Multi threaded merge sort.pdb
+C:\Users\Chen\source\repos\Multi threaded merge sort\Multi threaded merge sort\obj\Debug\net6.0\Multi threaded merge sort.csproj.AssemblyReference.cache
+C:\Users\Chen\source\repos\Multi threaded merge sort\Multi threaded merge sort\obj\Debug\net6.0\Multi threaded merge sort.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Chen\source\repos\Multi threaded merge sort\Multi threaded merge sort\obj\Debug\net6.0\Multi threaded merge sort.AssemblyInfoInputs.cache
+C:\Users\Chen\source\repos\Multi threaded merge sort\Multi threaded merge sort\obj\Debug\net6.0\Multi threaded merge sort.AssemblyInfo.cs
+C:\Users\Chen\source\repos\Multi threaded merge sort\Multi threaded merge sort\obj\Debug\net6.0\Multi threaded merge sort.csproj.CoreCompileInputs.cache
+C:\Users\Chen\source\repos\Multi threaded merge sort\Multi threaded merge sort\obj\Debug\net6.0\Multi threaded merge sort.dll
+C:\Users\Chen\source\repos\Multi threaded merge sort\Multi threaded merge sort\obj\Debug\net6.0\refint\Multi threaded merge sort.dll
+C:\Users\Chen\source\repos\Multi threaded merge sort\Multi threaded merge sort\obj\Debug\net6.0\Multi threaded merge sort.pdb
+C:\Users\Chen\source\repos\Multi threaded merge sort\Multi threaded merge sort\obj\Debug\net6.0\Multi threaded merge sort.genruntimeconfig.cache
+C:\Users\Chen\source\repos\Multi threaded merge sort\Multi threaded merge sort\obj\Debug\net6.0\ref\Multi threaded merge sort.dll
