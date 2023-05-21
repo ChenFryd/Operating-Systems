@@ -41,7 +41,7 @@ class Intersection
         lineBuffers.Add("NorthToSouth", new Queue<Car>());
         lineBuffers.Add("NorthToEast", new Queue<Car>());
         lineBuffers.Add("WestToEast", new Queue<Car>());
-        lineBuffers.Add("WestToSouth", new Queue<Car>());
+        lineBuffers.Add("WestToNorth", new Queue<Car>());
         lineBuffers.Add("SouthToNorth", new Queue<Car>());
         lineBuffers.Add("SouthToWest", new Queue<Car>());
         lineBuffers.Add("EastToWest", new Queue<Car>());

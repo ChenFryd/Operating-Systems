@@ -137,7 +137,7 @@
             // 
             // southToWestRate_tb
             // 
-            this.southToWestRate_tb.Location = new System.Drawing.Point(402, 281);
+            this.southToWestRate_tb.Location = new System.Drawing.Point(402, 277);
             this.southToWestRate_tb.Name = "southToWestRate_tb";
             this.southToWestRate_tb.Size = new System.Drawing.Size(311, 31);
             this.southToWestRate_tb.TabIndex = 9;
@@ -156,7 +156,7 @@
             // 
             // eastToWest_tb
             // 
-            this.eastToWest_tb.Location = new System.Drawing.Point(402, 367);
+            this.eastToWest_tb.Location = new System.Drawing.Point(402, 362);
             this.eastToWest_tb.Name = "eastToWest_tb";
             this.eastToWest_tb.Size = new System.Drawing.Size(311, 31);
             this.eastToWest_tb.TabIndex = 11;

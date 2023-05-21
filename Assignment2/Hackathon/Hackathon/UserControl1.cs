@@ -43,7 +43,7 @@ namespace WinFormsApp1
             int WestToEastRate = int.Parse(westToEastRate_tb.Text);
             dict.Add("WestToEast", WestToEastRate);
             int WestToNorthRate = int.Parse(westToNorthRate_tb.Text);
-            dict.Add("WestToSouth", WestToNorthRate);
+            dict.Add("WestToNorth", WestToNorthRate);
             int SouthToNorthRate = int.Parse(southToNorthRate_tb.Text);
             dict.Add("SouthToNorth", SouthToNorthRate);
             int SouthToWestRate = int.Parse(southToWestRate_tb.Text);
