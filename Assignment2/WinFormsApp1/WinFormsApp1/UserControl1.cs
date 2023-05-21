@@ -21,5 +21,15 @@ namespace WinFormsApp1
         {
 
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void northToSouthRate_tb_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
