@@ -43,8 +43,11 @@
             this.label7 = new System.Windows.Forms.Label();
             this.eastToSouthRate_tb = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.consumerRate_btn = new System.Windows.Forms.TextBox();
             this.start_btn = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.southToNorthRate_tb = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -145,7 +148,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Tw Cen MT", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(70, 333);
+            this.label6.Location = new System.Drawing.Point(70, 368);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(283, 25);
             this.label6.TabIndex = 10;
@@ -153,7 +156,7 @@
             // 
             // eastToWest_tb
             // 
-            this.eastToWest_tb.Location = new System.Drawing.Point(402, 330);
+            this.eastToWest_tb.Location = new System.Drawing.Point(402, 367);
             this.eastToWest_tb.Name = "eastToWest_tb";
             this.eastToWest_tb.Size = new System.Drawing.Size(311, 31);
             this.eastToWest_tb.TabIndex = 11;
@@ -163,7 +166,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Tw Cen MT", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(70, 380);
+            this.label7.Location = new System.Drawing.Point(70, 410);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(288, 25);
             this.label7.TabIndex = 12;
@@ -171,7 +174,7 @@
             // 
             // eastToSouthRate_tb
             // 
-            this.eastToSouthRate_tb.Location = new System.Drawing.Point(402, 374);
+            this.eastToSouthRate_tb.Location = new System.Drawing.Point(402, 404);
             this.eastToSouthRate_tb.Name = "eastToSouthRate_tb";
             this.eastToSouthRate_tb.Size = new System.Drawing.Size(311, 31);
             this.eastToSouthRate_tb.TabIndex = 13;
@@ -181,35 +184,69 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Tw Cen MT", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(70, 427);
+            this.label8.Location = new System.Drawing.Point(70, 453);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(143, 25);
             this.label8.TabIndex = 14;
             this.label8.Text = "Consumer rate:\r\n";
             // 
-            // textBox1
+            // consumerRate_btn
             // 
-            this.textBox1.Location = new System.Drawing.Point(402, 424);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(311, 31);
-            this.textBox1.TabIndex = 15;
+            this.consumerRate_btn.Location = new System.Drawing.Point(402, 447);
+            this.consumerRate_btn.Name = "consumerRate_btn";
+            this.consumerRate_btn.Size = new System.Drawing.Size(311, 31);
+            this.consumerRate_btn.TabIndex = 15;
             // 
             // start_btn
             // 
             this.start_btn.BackColor = System.Drawing.Color.Coral;
-            this.start_btn.Location = new System.Drawing.Point(304, 498);
+            this.start_btn.Location = new System.Drawing.Point(301, 500);
             this.start_btn.Name = "start_btn";
-            this.start_btn.Size = new System.Drawing.Size(163, 59);
+            this.start_btn.Size = new System.Drawing.Size(155, 55);
             this.start_btn.TabIndex = 16;
             this.start_btn.Text = "Start";
             this.start_btn.UseVisualStyleBackColor = false;
+            this.start_btn.Click += new System.EventHandler(this.start_btn_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Tw Cen MT Condensed Extra Bold", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(265, 12);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(218, 51);
+            this.label9.TabIndex = 17;
+            this.label9.Text = "Intersection";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Tw Cen MT", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label10.ForeColor = System.Drawing.Color.White;
+            this.label10.Location = new System.Drawing.Point(70, 327);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(296, 25);
+            this.label10.TabIndex = 18;
+            this.label10.Text = "Producer south to north line rate:\r\n";
+            this.label10.Click += new System.EventHandler(this.label10_Click);
+            // 
+            // southToNorthRate_tb
+            // 
+            this.southToNorthRate_tb.Location = new System.Drawing.Point(402, 321);
+            this.southToNorthRate_tb.Name = "southToNorthRate_tb";
+            this.southToNorthRate_tb.Size = new System.Drawing.Size(311, 31);
+            this.southToNorthRate_tb.TabIndex = 19;
             // 
             // UserControl1
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.southToNorthRate_tb);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.start_btn);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.consumerRate_btn);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.eastToSouthRate_tb);
             this.Controls.Add(this.label7);
@@ -249,7 +286,10 @@
         private Label label7;
         private TextBox eastToSouthRate_tb;
         private Label label8;
-        private TextBox textBox1;
+        private TextBox consumerRate_btn;
         private Button start_btn;
+        private Label label9;
+        private Label label10;
+        private TextBox southToNorthRate_tb;
     }
 }

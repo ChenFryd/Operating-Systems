@@ -28,19 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.userControl11 = new WinFormsApp1.UserControl1();
             this.SuspendLayout();
             // 
-            // label1
+            // userControl11
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Tw Cen MT Condensed Extra Bold", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(253, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(218, 51);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Intersection";
+            this.userControl11.BackColor = System.Drawing.Color.Transparent;
+            this.userControl11.Location = new System.Drawing.Point(-1, 0);
+            this.userControl11.Name = "userControl11";
+            this.userControl11.Size = new System.Drawing.Size(802, 900);
+            this.userControl11.TabIndex = 0;
+            this.userControl11.Load += new System.EventHandler(this.userControl11_Load);
             // 
             // Form1
             // 
@@ -48,18 +46,17 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.CadetBlue;
             this.ClientSize = new System.Drawing.Size(800, 600);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.userControl11);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private Label label1;
+        private UserControl1 userControl11;
     }
 }

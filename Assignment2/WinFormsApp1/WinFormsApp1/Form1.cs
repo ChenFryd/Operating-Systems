@@ -27,5 +27,10 @@ namespace WinFormsApp1
         {
 
         }
+
+        private void userControl11_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
