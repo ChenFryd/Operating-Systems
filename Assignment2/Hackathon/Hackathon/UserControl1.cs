@@ -53,11 +53,11 @@ namespace Hackathon
             int EastToSouthRate = int.Parse(eastToSouthRate_tb.Text);
             dict.Add("EastToSouth", EastToSouthRate);
             UserControl2 userControl2 = new UserControl2();
-            Intersection intersection = new Intersection(dict,consumerRate, userControl2);
-            
+            Intersection intersection = new Intersection(dict, consumerRate, userControl2);
+
             Form form = this.FindForm();
             form.Controls.Clear();
-           
+
             form.Controls.Add(userControl2);
             intersection.StartSimulation();
         }

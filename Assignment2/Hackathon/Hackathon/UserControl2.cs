@@ -20,6 +20,7 @@ namespace Hackathon
             flowLayoutPanel = new FlowLayoutPanel();
             flowLayoutPanel.FlowDirection = FlowDirection.LeftToRight;
             flowLayoutPanel.Dock = DockStyle.Fill;
+            this.Controls.Add(flowLayoutPanel);
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -38,8 +39,11 @@ namespace Hackathon
             };
 
             flowLayoutPanel.Controls.Add(pictureBox);
+            flowLayoutPanel.Refresh();
         }
-
+        public void RemoveCar(Car car) { 
+        
+        }
         private void exit_btn_Click(object sender, EventArgs e)
         {
             Form parentForm = this.FindForm();
