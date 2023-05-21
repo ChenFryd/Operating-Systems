@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WinFormsApp1
+namespace Hackathon
 {
     public partial class UserControl1 : UserControl
     {
@@ -52,11 +52,12 @@ namespace WinFormsApp1
             dict.Add("EastToWest", EastToWestRate);
             int EastToSouthRate = int.Parse(eastToSouthRate_tb.Text);
             dict.Add("EastToSouth", EastToSouthRate);
-            Intersection intersection = new Intersection(dict,consumerRate);
+            UserControl2 userControl2 = new UserControl2();
+            Intersection intersection = new Intersection(dict,consumerRate, userControl2);
             
             Form form = this.FindForm();
             form.Controls.Clear();
-            UserControl2 userControl2 = new UserControl2();
+           
             form.Controls.Add(userControl2);
             intersection.StartSimulation();
         }
