@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.userControl11 = new UserControl1();
+            this.userControl11 = new Hackathon.UserControl1();
             this.SuspendLayout();
             // 
             // userControl11
