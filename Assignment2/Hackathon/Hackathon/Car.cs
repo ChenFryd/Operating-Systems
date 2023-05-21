@@ -4,10 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WinFormsApp1
+namespace Hackathon
 {
-    internal class Car
+    public class Car
     {
-        Car() { }
+        public Image Picture { get; set; }
+        public Car() {
+            this.Picture = Image.FromFile("pics/car1.png");
+        }
+        public Image getImage() { 
+            return this.Picture;
+        }
+        
     }
 }

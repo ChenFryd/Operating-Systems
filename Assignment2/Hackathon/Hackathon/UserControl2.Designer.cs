@@ -1,4 +1,4 @@
-﻿namespace WinFormsApp1
+﻿namespace Hackathon
 {
     partial class UserControl2
     {
@@ -29,69 +29,69 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserControl2));
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.exit_btn = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.SuspendLayout();
+            pictureBox1 = new PictureBox();
+            exit_btn = new Button();
+            pictureBox2 = new PictureBox();
+            label1 = new Label();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            SuspendLayout();
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(420, 68);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(357, 451);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(420, 68);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(357, 451);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
             // 
             // exit_btn
             // 
-            this.exit_btn.BackColor = System.Drawing.Color.Coral;
-            this.exit_btn.Location = new System.Drawing.Point(297, 525);
-            this.exit_btn.Name = "exit_btn";
-            this.exit_btn.Size = new System.Drawing.Size(155, 55);
-            this.exit_btn.TabIndex = 1;
-            this.exit_btn.Text = "Exit";
-            this.exit_btn.UseVisualStyleBackColor = false;
+            exit_btn.BackColor = Color.Coral;
+            exit_btn.Location = new Point(297, 525);
+            exit_btn.Name = "exit_btn";
+            exit_btn.Size = new Size(155, 55);
+            exit_btn.TabIndex = 1;
+            exit_btn.Text = "Exit";
+            exit_btn.UseVisualStyleBackColor = false;
             // 
             // pictureBox2
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Location = new System.Drawing.Point(92, 141);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(161, 90);
-            this.pictureBox2.TabIndex = 2;
-            this.pictureBox2.TabStop = false;
+            pictureBox2.BackColor = Color.Transparent;
+            pictureBox2.Location = new Point(92, 141);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(161, 90);
+            pictureBox2.TabIndex = 2;
+            pictureBox2.TabStop = false;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Tw Cen MT Condensed Extra Bold", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(264, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(218, 51);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Intersection";
+            label1.AutoSize = true;
+            label1.Font = new Font("Tw Cen MT Condensed Extra Bold", 22F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(264, 14);
+            label1.Name = "label1";
+            label1.Size = new Size(184, 44);
+            label1.TabIndex = 3;
+            label1.Text = "Intersection";
             // 
             // UserControl2
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.exit_btn);
-            this.Controls.Add(this.pictureBox1);
-            this.Name = "UserControl2";
-            this.Size = new System.Drawing.Size(800, 600);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleMode = AutoScaleMode.None;
+            BackColor = SystemColors.ActiveBorder;
+            Controls.Add(label1);
+            Controls.Add(pictureBox2);
+            Controls.Add(exit_btn);
+            Controls.Add(pictureBox1);
+            Name = "UserControl2";
+            Size = new Size(800, 600);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
