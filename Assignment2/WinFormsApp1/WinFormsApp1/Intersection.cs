@@ -1,164 +1,121 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
-
+class Car
+{
+    // You can add properties and methods specific to a Car object here
+}
 class Intersection
 {
-    //how many lines there are
-    private int _northToSouthLines;
-    private int _northToEastLines;
+    // Buffers for each line
+    private Dictionary<string, Queue<Car>> lineBuffers;
 
-    private int _westToEastLines;
-    private int _westToNorthLines;
-
-    private int _southToNorthLines;
-    private int _southToWestLines;
-
-    private int _eastToWestLines;
-    private int _eastToSouthLines;
-
-    //how many cars cross the intersection
+    // Producer and consumer rates
+    private Dictionary<string, int> producerRates;
+    private Dictionary<string, List<string>> cycle;
     private int consumerRate;
 
-    //how many cars are added to the intersection each minute
-    private int _producerNorthToSouthLineRate;
-    private int _producerNorthToEastLineRate;
+    // Mutex for synchronization
+    private readonly object mutex = new object();
 
-    private int _producerWestToEastLineRate;
-    private int _producerWestToNorthLineRate;
-
-    private int _producerSouthToNorthLineRate;
-    private int _producerSouthToWestLineRate;
-
-    private int _producerEastToWestLineRate;
-    private int _producerEastToSouthLineRate;
-
-    //how much cars there are in each line
-    private int _counterCarsNorthToSouth;
-    private int _counterCarsNorthToEast;
-    private int _counterCarsSouthToNorth;
-    private int _counterCarsSouthToWest;
-    private int _counterCarsWestToEast;
-    private int _counterCarsWestToNorth;
-    private int _counterCarsEastToWest;
-    private int _counterCarsEastToSouth;
-
-    //rand
-    private Random rand = new Random();
-
-    public Intersection() //default values
+    public Intersection(int producerRate, int consumerRate)
     {
-        //number of lines on each direction
-        this._northLines = 1;
-        this._northToEastLines = 1;
-        this._westLines = 1;
-        this._westToNorthLines = 1;
-        this._southLines = 1;
-        this._southToWestLines = 1;
-        this._eastLines = 1;
-        this._eastToSouthLines = 1;
-
-        //how many cars can cross each green light
-        this.consumerRate = 3;
-
-        //current cars in each line
-        this._counterCarsNorth = 0;
-        this._counterCarsNorthToEast = 0;
-        this._counterCarsSouth = 0;
-        this._counterCarsSouthToWest = 0;
-        this._counterCarsWest = 0;
-        this._counterCarsWestToNorth = 0;
-        this._counterCarsEast = 0;
-        this._counterCarsEastToNorthRate = 0;
-}
-
-    public void cycle() {
-        crossNorthToSouthAndCrossSouthToNorth();
-        crossNorthToSouthAndCrossNorthToEast();
-        crossEastToWestAndCrossWestToEast();
-        crossEastToWestAndCrossEastToSouth();
-        crossNorthToSouthAndCrossSouthToNorth();
-        crossSouthToNorthAndCrossSouthToWest();
-        crossEastToWestAndCrossWestToEast();
-        crossWestToNorthAndWestToEast();
+        this.consumerRate = consumerRate;
+        this.producerRates = new Dictionary<string, int>();
+        this.lineBuffers = new Dictionary<string, Queue<Car>>();
+        this.cycle = new Dictionary<string, List<String>>();
+        InitiateCycle();
+        InitializeLineBuffers();
     }
-    public void crossNorthToSouthAndCrossSouthToNorth()
+
+    public void InitiateCycle() {
+        cycle.Add("NorthToSouthAndNorthToEast", new List<string> { "NorthToSouth", "NorthToEast" });
+        cycle.Add("WestToEastAndWestToSouth", new List<string> { "WestToEast", "WestToSouth" });
+        cycle.Add("SouthToNorthAndSouthToWest", new List<string> { "SouthToNorth", "SouthToWest" });
+        cycle.Add("EastToWestAndEastToNorth", new List<string> { "EastToWest", "EastToNorth" });
+    }
+
+    private void InitializeLineBuffers()
     {
-        lock (this)
-        {
-            Console.WriteLine($"{consumerRate*_northToSouthLines} Cars crossing from the North to the South and {consumerRate * _southToNorthLines} cars crossing from the South to the North.");
-            _counterCarsNorthToSouth -= consumerRate * _westToEastLines;
-            _counterCarsSouthToNorth -= consumerRate * _southToNorthLines;
-            Monitor.PulseAll(this);
-        }
+        // Add line buffers for each direction
+        lineBuffers.Add("NorthToSouth", new Queue<Car>());
+        lineBuffers.Add("NorthToEast", new Queue<Car>());
+        lineBuffers.Add("WestToEast", new Queue<Car>());
+        lineBuffers.Add("WestToSouth", new Queue<Car>());
+        lineBuffers.Add("SouthToNorth", new Queue<Car>());
+        lineBuffers.Add("SouthToWest", new Queue<Car>());
+        lineBuffers.Add("EastToWest", new Queue<Car>());
+        lineBuffers.Add("EastToNorth", new Queue<Car>());
     }
-    public void crossNorthToSouthAndCrossNorthToEast()
+
+    public void StartSimulation()
     {
-        lock (this)
-        {
-            Console.WriteLine($"{consumerRate * _northToSouthLines} Cars crossing from the north to the South and {consumerRate * _northToEastLines} cars crossing from the north to the East.");
-            _counterCarsNorthToSouth -= consumerRate * _northToSouthLines;
-            _counterCarsNorthToEast -= consumerRate * _northToEastLines;
-            Monitor.PulseAll(this);
-        }
+        Thread producerThread = new Thread(Producer);
+        Thread consumerThread = new Thread(Consumer);
+
+        producerThread.Start();
+        consumerThread.Start();
     }
 
-    public void crossEastToWestAndCrossWestToEast() {
-        lock (this)
-        {
-            Console.WriteLine($"{consumerRate * _counterCarsEastToWest} Cars crossing from the East to the West and {consumerRate * _westToEastLines} cars crossing from the West to the East.");
-            _counterCarsEastToWest -= consumerRate * _counterCarsEastToWest;
-            _counterCarsWestToEast -= consumerRate * _westToEastLines;
-            Monitor.PulseAll(this);
-        }
-    }
-    public void crossEastToWestAndCrossEastToSouth()
+    private void Producer()
     {
-        lock (this)
+        while (true)
         {
-            Console.WriteLine($"{consumerRate * _eastToWestLines} Cars crossing from the East to the West and {consumerRate *_eastToSouthLines} cars crossing from the East to the South.");
-            _counterCarsEastToWest -= consumerRate * _eastToWestLines;
-            _counterCarsEastToSouth -= consumerRate * _eastToSouthLines;
-            Monitor.PulseAll(this);
+            lock (mutex)
+            {
+                Console.WriteLine("Adding cars to the intersection:");
+
+                foreach (var lineBuffer in lineBuffers)
+                {
+                    string direction = lineBuffer.Key;
+                    Queue<Car> buffer = lineBuffer.Value;
+
+                    for (int i = 0; i < producerRates[direction]; i++)
+                    {
+                        Car car = new Car(); // Create a new car object
+                        buffer.Enqueue(car); // Add the car to the line buffer
+                        Console.WriteLine($"- Car added to {direction} line");
+                    }
+                }
+
+                Monitor.PulseAll(mutex); // Signal that cars are added
+
+                Thread.Sleep(1000); // Simulate some time before next production
+            }
         }
     }
 
-    public void crossSouthToNorthAndCrossSouthToWest() {
-        lock (this)
-        {
-            Console.WriteLine($"{consumerRate * _southToNorthLines} Cars crossing from the South to the North and {consumerRate * _southToWestLines} cars crossing from the South to the West.");
-            _counterCarsSouthToNorth -= consumerRate * _southToNorthLines;
-            _counterCarsSouthToWest -= consumerRate * _southToWestLines;
-            Monitor.PulseAll(this);
-        }
-    }
-
-    public void crossWestToNorthAndWestToEast() {
-        lock (this)
-        {
-            Console.WriteLine($"{consumerRate* _westToNorthLines} Cars crossing from the West to North and {consumerRate*_westToEastLines} cars crossing from the West to the East.");
-            _counterCarsWestToNorth -= consumerRate*_westToNorthLines;
-            _counterCarsWestToEast -= consumerRate*_westToEastLines;
-            Monitor.PulseAll(this);
-        }
-    }
-    public void AddCars()
+    private void Consumer()
     {
-        lock (this)
+        while (true)
         {
-            Console.WriteLine($"Adding cars to the intersection:");
-            Console.WriteLine($"- Cars in the north: {producerNorthLineRate} cars.");
-            Console.WriteLine($"- Cars in the west: {producerWestLineRate} cars.");
-            Console.WriteLine($"- Cars in the south: {producerSouthLineRate} cars.");
-            Console.WriteLine($"- Cars in the east: {producerEastLineRate} cars.");
+            lock (mutex)
+            {
+                Console.WriteLine("Crossing the intersection:");
 
-            _counterCarsNorthToSouth += _producerNorthToSouthLineRate;
-            _counterCarsNorthToEast += _producerNorthToEastLineRate;
-            -
-            southLines += producerSouthLineRate;
-            eastLines += producerEastLineRate;
+                foreach (var cycleDir in cycle) //south to north, south to west
+                { 
 
-            Monitor.PulseAll(this);
+                    foreach (var direction in cycleDir.Value)
+                    {
+                        Queue<Car> buffer = lineBuffers[direction];
+
+                        if (buffer.Count >= consumerRate)
+                        {
+                            for (int i = 0; i < consumerRate; i++)
+                            {
+                                Car car = buffer.Dequeue(); // Remove car from the line buffer
+                                Console.WriteLine($"- Car crossed from {direction}");
+                            }
+                        }
+                    }
+                }
+
+                Monitor.PulseAll(mutex); // Signal that cars have crossed
+
+                Thread.Sleep(1000); // Simulate some time before next consumption
+            }
         }
     }
 }
+
