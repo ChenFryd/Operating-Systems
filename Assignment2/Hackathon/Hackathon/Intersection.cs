@@ -17,12 +17,13 @@ namespace Hackathon
         // Producer and consumer rates
         private Dictionary<string, int> producerRates;
         private Dictionary<string, List<string>> cycle;
+        private Dictionary<string,Mutex> mutexDict;
         private int consumerRate;
         private UserControl2 _uc;
 
-    // Mutex for synchronization
-    private readonly object mutex = new object();
-    private Mutex mutexIntersection;
+
+    
+
 
         public Intersection(Dictionary<string, int> producerRatesInput, int consumerRate, UserControl2 uc)
         {
@@ -40,6 +41,16 @@ namespace Hackathon
         cycle.Add("WestToEastAndWestToNorth", new List<string> { "WestToEast", "WestToNorth" });
         cycle.Add("SouthToNorthAndSouthToWest", new List<string> { "SouthToNorth", "SouthToWest" });
         cycle.Add("EastToWestAndEastToNorth", new List<string> { "EastToWest", "EastToSouth" });
+    }
+        public void InitiateMutex() {
+            mutexDict.Add("NorthToSouth", new Mutex());
+            mutexDict.Add("NorthToEast", new Mutex());
+            mutexDict.Add("WestToEast", new Mutex());
+            mutexDict.Add("WestToNorth", new Mutex());
+            mutexDict.Add("SouthToNorth", new Mutex());
+            mutexDict.Add("SouthToWest", new Mutex());
+            mutexDict.Add("EastToWest", new Mutex());
+            mutexDict.Add("EastToSouth", new Mutex());
     }
 
         private void InitializeLineBuffers()
@@ -68,27 +79,19 @@ namespace Hackathon
         {
             while (true)
             {
-                lock (mutex)
+                foreach (var lineBuffer in lineBuffers)
                 {
-                    Console.WriteLine("Adding cars to the intersection:");
-
-                    foreach (var lineBuffer in lineBuffers)
+                    string direction = lineBuffer.Key;
+                    Queue<Car> buffer = lineBuffer.Value;
+                    Mutex mutexLine = mutexDict[direction];
+                    mutexLine.WaitOne();
+                    for (int i = 0; i < producerRates[direction]; i++)
                     {
-                        string direction = lineBuffer.Key;
-                        Queue<Car> buffer = lineBuffer.Value;
-
-                        for (int i = 0; i < producerRates[direction]; i++)
-                        {
-                            Car car = new Car(); // Create a new car object
-                            _uc.AddCar(car);
-                            buffer.Enqueue(car); // Add the car to the line buffer
-                            Console.WriteLine($"- Car added to {direction} line");
-                        }
+                        Car car = new Car(); // Create a new car object
+                        _uc.AddCar(car);
+                        buffer.Enqueue(car); // Add the car to the line buffer
                     }
-
-                    Monitor.PulseAll(mutex); // Signal that cars are added
-
-                    Thread.Sleep(1000); // Simulate some time before next production
+                    mutexLine.ReleaseMutex();
                 }
             }
         }
@@ -97,36 +100,34 @@ namespace Hackathon
         {
             while (true)
             {
-                lock (mutex)
+                foreach (var cycleDir in cycle) //south to north, south to west
                 {
-                    Console.WriteLine("Crossing the intersection:");
-
-                    foreach (var cycleDir in cycle) //south to north, south to west
+                    string dir1 = cycleDir.Value[0];
+                    string dir2 = cycleDir.Value[1];
+                    Queue<Car> buffer1 = lineBuffers[dir1];
+                    Queue<Car> buffer2 = lineBuffers[dir2];
+                    Mutex mutexDir1 = mutexDict[dir1];
+                    Mutex mutexDir2 = mutexDict[dir2];
+                    mutexDir1.WaitOne();
+                    mutexDir2.WaitOne();
+                    if (buffer1.Count >= consumerRate || buffer2.Count >= consumerRate)
                     {
-                        Queue<Car> buffer1 = lineBuffers[cycleDir.Value[0]];
-                        Queue<Car> buffer2 = lineBuffers[cycleDir.Value[1]];
-                        if (buffer1.Count >= consumerRate || buffer2.Count >= consumerRate)
+                        for (int i = 0; i < consumerRate; i++)
                         {
-                            for (int i = 0; i < consumerRate; i++)
+                            if (buffer1.Count > 0)
                             {
-                                if (buffer1.Count > 0)
-                                {
-                                    Car car = buffer1.Dequeue(); // Remove car from the line buffer
-                                    Console.WriteLine($"- Car crossed from {cycleDir.Value[0]}");
-                                }
-                                if (buffer2.Count > 0)
-                                {
-                                    Car car = buffer2.Dequeue(); // Remove car from the line buffer
-                                    Console.WriteLine($"- Car crossed from {cycleDir.Value[1]}");
-                                }
+                                Car car = buffer1.Dequeue(); // Remove car from the line buffer
+                                _uc.RemoveCar(car);
+                            }
+                            if (buffer2.Count > 0)
+                            {
+                                Car car = buffer2.Dequeue(); // Remove car from the line buffer
+                                _uc.RemoveCar(car);
                             }
                         }
-
                     }
-
-                    Monitor.PulseAll(mutex); // Signal that cars have crossed
-
-                    Thread.Sleep(1000); // Simulate some time before next consumption
+                    mutexDir1.ReleaseMutex();
+                    mutexDir2.ReleaseMutex();
                 }
             }
         }

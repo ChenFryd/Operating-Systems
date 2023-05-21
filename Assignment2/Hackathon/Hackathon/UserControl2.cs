@@ -31,10 +31,17 @@ namespace Hackathon
             pictureBox.Image = car.getImage();
             Invoke((MethodInvoker)delegate
             {
-                Controls.Add(pictureBox);
-            });
-        }
+                SizeMode = PictureBoxSizeMode.StretchImage,
+                Image = car.getImage(),
+                Width = 100,
+                Height = 100
+            };
 
+            flowLayoutPanel.Controls.Add(pictureBox);
+        }
+        public void RemoveCar(Car car) { 
+        
+        }
         private void exit_btn_Click(object sender, EventArgs e)
         {
             Form parentForm = this.FindForm();

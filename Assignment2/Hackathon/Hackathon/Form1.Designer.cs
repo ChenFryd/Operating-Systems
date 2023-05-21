@@ -33,27 +33,26 @@
             // 
             // userControl11
             // 
-            this.userControl11.BackColor = System.Drawing.Color.Transparent;
-            this.userControl11.Location = new System.Drawing.Point(-2, 2);
-            this.userControl11.Margin = new System.Windows.Forms.Padding(2);
-            this.userControl11.Name = "userControl11";
-            this.userControl11.Size = new System.Drawing.Size(800, 600);
-            this.userControl11.TabIndex = 0;
-            this.userControl11.Load += new System.EventHandler(this.userControl11_Load_1);
+            userControl11.BackColor = Color.Transparent;
+            userControl11.Location = new Point(-2, 2);
+            userControl11.Margin = new Padding(2);
+            userControl11.Name = "userControl11";
+            userControl11.Size = new Size(640, 480);
+            userControl11.TabIndex = 0;
+            userControl11.Load += userControl11_Load_1;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.CadetBlue;
-            this.ClientSize = new System.Drawing.Size(800, 600);
-            this.Controls.Add(this.userControl11);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "Form1";
-            this.Text = "Form1";
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.CadetBlue;
+            ClientSize = new Size(800, 600);
+            Controls.Add(userControl11);
+            FormBorderStyle = FormBorderStyle.None;
+            Margin = new Padding(2);
+            Name = "Form1";
+            Text = "Form1";
+            ResumeLayout(false);
         }
 
         #endregion
