@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.userControl11 = new WinFormsApp1.UserControl1();
+            this.userControl11 = new UserControl1();
             this.SuspendLayout();
             // 
             // userControl11
