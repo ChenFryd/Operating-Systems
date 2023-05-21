@@ -18,10 +18,10 @@ class Intersection
     // Mutex for synchronization
     private readonly object mutex = new object();
 
-    public Intersection(int producerRate, int consumerRate)
+    public Intersection(Dictionary<string, int> producerRatesInput, int consumerRate)
     {
         this.consumerRate = consumerRate;
-        this.producerRates = new Dictionary<string, int>();
+        this.producerRates = producerRatesInput; //for lena
         this.lineBuffers = new Dictionary<string, Queue<Car>>();
         this.cycle = new Dictionary<string, List<String>>();
         InitiateCycle();
@@ -95,20 +95,25 @@ class Intersection
 
                 foreach (var cycleDir in cycle) //south to north, south to west
                 { 
-
-                    foreach (var direction in cycleDir.Value)
+                    Queue<Car> buffer1 = lineBuffers[cycleDir.Value[0]];
+                    Queue<Car> buffer2 = lineBuffers[cycleDir.Value[1]];
+                    if (buffer1.Count >= consumerRate || buffer2.Count >= consumerRate)
                     {
-                        Queue<Car> buffer = lineBuffers[direction];
-
-                        if (buffer.Count >= consumerRate)
+                        for (int i = 0; i < consumerRate; i++)
                         {
-                            for (int i = 0; i < consumerRate; i++)
+                            if (buffer1.Count > 0)
                             {
-                                Car car = buffer.Dequeue(); // Remove car from the line buffer
-                                Console.WriteLine($"- Car crossed from {direction}");
+                                Car car = buffer1.Dequeue(); // Remove car from the line buffer
+                                Console.WriteLine($"- Car crossed from {cycleDir.Value[0]}");
+                            }
+                            if (buffer2.Count > 0)
+                            {
+                                Car car = buffer2.Dequeue(); // Remove car from the line buffer
+                                Console.WriteLine($"- Car crossed from {cycleDir.Value[1]}");
                             }
                         }
                     }
+                    
                 }
 
                 Monitor.PulseAll(mutex); // Signal that cars have crossed
