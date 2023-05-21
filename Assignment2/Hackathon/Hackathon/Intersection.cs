@@ -29,11 +29,14 @@ namespace Hackathon
         {
             this.consumerRate = consumerRate;
             this.producerRates = producerRatesInput;
+            this.mutexDict = new Dictionary<string,Mutex>();
             this.lineBuffers = new Dictionary<string, Queue<Car>>();
             this.cycle = new Dictionary<string, List<String>>();
             this._uc = uc;
             InitiateCycle();
             InitializeLineBuffers();
+            InitiateMutex();
+
         }
 
     public void InitiateCycle() {
