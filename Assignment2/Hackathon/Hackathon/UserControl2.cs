@@ -16,5 +16,11 @@ namespace WinFormsApp1
         {
             InitializeComponent();
         }
+
+        private void exit_btn_Click(object sender, EventArgs e)
+        {
+            Form parentForm = this.FindForm();
+            parentForm.Close();
+        }
     }
 }

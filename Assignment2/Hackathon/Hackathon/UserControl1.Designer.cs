@@ -129,7 +129,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Tw Cen MT", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(70, 287);
+            this.label5.Location = new System.Drawing.Point(70, 283);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(291, 25);
             this.label5.TabIndex = 8;
@@ -200,7 +200,7 @@
             // start_btn
             // 
             this.start_btn.BackColor = System.Drawing.Color.Coral;
-            this.start_btn.Location = new System.Drawing.Point(301, 500);
+            this.start_btn.Location = new System.Drawing.Point(297, 525);
             this.start_btn.Name = "start_btn";
             this.start_btn.Size = new System.Drawing.Size(155, 55);
             this.start_btn.TabIndex = 16;

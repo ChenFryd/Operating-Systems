@@ -17,6 +17,7 @@ class Intersection
 
     // Mutex for synchronization
     private readonly object mutex = new object();
+    private Mutex mutexIntersection;
 
     public Intersection(Dictionary<string, int> producerRatesInput, int consumerRate)
     {
@@ -30,7 +31,7 @@ class Intersection
 
     public void InitiateCycle() {
         cycle.Add("NorthToSouthAndNorthToEast", new List<string> { "NorthToSouth", "NorthToEast" });
-        cycle.Add("WestToEastAndWestToSouth", new List<string> { "WestToEast", "WestToSouth" });
+        cycle.Add("WestToEastAndWestToNorth", new List<string> { "WestToEast", "WestToNorth" });
         cycle.Add("SouthToNorthAndSouthToWest", new List<string> { "SouthToNorth", "SouthToWest" });
         cycle.Add("EastToWestAndEastToNorth", new List<string> { "EastToWest", "EastToSouth" });
     }
