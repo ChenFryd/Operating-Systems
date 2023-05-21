@@ -10,8 +10,7 @@ namespace Hackathon
     {
         public Image Picture { get; set; }
         public PictureBox pictureBox { get; set; }
-        public Car()
-        {
+        public Car() {
             this.Picture = Image.FromFile("pics/car1.png");
         }
 
@@ -23,10 +22,9 @@ namespace Hackathon
         {
             return this.pictureBox;
         }
-        public Image getImage()
-        {
+        public Image getImage() { 
             return this.Picture;
         }
-
+        
     }
 }

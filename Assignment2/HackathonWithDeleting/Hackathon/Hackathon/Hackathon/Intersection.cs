@@ -17,19 +17,19 @@ namespace Hackathon
         // Producer and consumer rates
         private Dictionary<string, int> producerRates;
         private Dictionary<string, List<string>> cycle;
-        private Dictionary<string, Mutex> mutexDict;
+        private Dictionary<string,Mutex> mutexDict;
         private int consumerRate;
         private UserControl2 _uc;
 
 
-
+    
 
 
         public Intersection(Dictionary<string, int> producerRatesInput, int consumerRate, UserControl2 uc)
         {
             this.consumerRate = consumerRate;
             this.producerRates = producerRatesInput;
-            this.mutexDict = new Dictionary<string, Mutex>();
+            this.mutexDict = new Dictionary<string,Mutex>();
             this.lineBuffers = new Dictionary<string, Queue<Car>>();
             this.cycle = new Dictionary<string, List<String>>();
             this._uc = uc;
@@ -39,15 +39,13 @@ namespace Hackathon
 
         }
 
-        public void InitiateCycle()
-        {
-            cycle.Add("NorthToSouthAndNorthToEast", new List<string> { "NorthToSouth", "NorthToEast" });
-            cycle.Add("WestToEastAndWestToNorth", new List<string> { "WestToEast", "WestToNorth" });
-            cycle.Add("SouthToNorthAndSouthToWest", new List<string> { "SouthToNorth", "SouthToWest" });
-            cycle.Add("EastToWestAndEastToNorth", new List<string> { "EastToWest", "EastToSouth" });
-        }
-        public void InitiateMutex()
-        {
+    public void InitiateCycle() {
+        cycle.Add("NorthToSouthAndNorthToEast", new List<string> { "NorthToSouth", "NorthToEast" });
+        cycle.Add("WestToEastAndWestToNorth", new List<string> { "WestToEast", "WestToNorth" });
+        cycle.Add("SouthToNorthAndSouthToWest", new List<string> { "SouthToNorth", "SouthToWest" });
+        cycle.Add("EastToWestAndEastToNorth", new List<string> { "EastToWest", "EastToSouth" });
+    }
+        public void InitiateMutex() {
             mutexDict.Add("NorthToSouth", new Mutex());
             mutexDict.Add("NorthToEast", new Mutex());
             mutexDict.Add("WestToEast", new Mutex());
@@ -56,7 +54,7 @@ namespace Hackathon
             mutexDict.Add("SouthToWest", new Mutex());
             mutexDict.Add("EastToWest", new Mutex());
             mutexDict.Add("EastToSouth", new Mutex());
-        }
+    }
 
         private void InitializeLineBuffers()
         {
@@ -93,7 +91,7 @@ namespace Hackathon
                     for (int i = 0; i < producerRates[direction]; i++)
                     {
                         Car car = new Car(); // Create a new car object
-                        _uc.AddCar(car, direction);
+                        _uc.AddCar(car,direction);
                         buffer.Enqueue(car); // Add the car to the line buffer
                     }
                     mutexLine.ReleaseMutex();
@@ -123,12 +121,12 @@ namespace Hackathon
                             if (buffer1.Count > 0)
                             {
                                 Car car = buffer1.Dequeue(); // Remove car from the line buffer
-                                _uc.RemoveCar(car, dir1);
+                                _uc.RemoveCar(car,dir1);
                             }
                             if (buffer2.Count > 0)
                             {
                                 Car car = buffer2.Dequeue(); // Remove car from the line buffer
-                                _uc.RemoveCar(car, dir2);
+                                _uc.RemoveCar(car,dir2);
                             }
                         }
                     }

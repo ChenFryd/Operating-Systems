@@ -36,12 +36,5 @@ namespace Hackathon
         {
 
         }
-
-        private void userControl1_ExitButtonClicked(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-
     }
 }
